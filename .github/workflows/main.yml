@@ -21,4 +21,4 @@ jobs:
 
     - name: Build Java Application
       run: |
-        mvnw package -DskipTests # Use Gradle if applicable
+        mvn package -DskipTests # Use Gradle if applicable
