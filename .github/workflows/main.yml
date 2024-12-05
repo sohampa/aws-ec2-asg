@@ -39,9 +39,9 @@ jobs:
 
     - name: Update Launch Template with New AMI
       run: |
-        LAUNCH_TEMPLATE_NAME="soham-test-template"
-        LAUNCH_TEMPLATE_ID=$(aws ec2 describe-launch-templates --filters "Name=launch-template-name,Values=$LAUNCH_TEMPLATE_NAME" --query "LaunchTemplates[0].LaunchTemplateId" --output text)
-        LAUNCH_TEMPLATE_ID=$(aws ec2 describe-launch-templates --query "LaunchTemplates[0].LaunchTemplateId" --output text)
+        #LAUNCH_TEMPLATE_NAME="soham-test-template"
+        #LAUNCH_TEMPLATE_ID=$(aws ec2 describe-launch-templates --filters "Name=launch-template-name,Values=$LAUNCH_TEMPLATE_NAME" --query "LaunchTemplates[0].LaunchTemplateId" --output text)
+        LAUNCH_TEMPLATE_ID=$(aws ec2 describe-launch-templates --query "LaunchTemplates[3].LaunchTemplateId" --output text)
         aws ec2 create-launch-template-version \
           --launch-template-id $LAUNCH_TEMPLATE_ID \
           --source-version 1 \
