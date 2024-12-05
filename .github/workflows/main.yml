@@ -1,0 +1,24 @@
+name: Deploy Java App to AWS ASG
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17' # Adjust based on your application's requirements
+
+    - name: Build Java Application
+      run: |
+        ./mvnw package -DskipTests # Use Gradle if applicable
