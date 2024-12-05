@@ -49,3 +49,7 @@ jobs:
         aws ec2 modify-launch-template \
           --launch-template-id $LAUNCH_TEMPLATE_ID \
           --default-version 2
+
+    - name: Trigger ASG Instance Refresh
+      run: |
+        aws autoscaling start-instance-refresh --auto-scaling-group-name product-app-soham --preferences '{"MinHealthyPercentage": 90}'
