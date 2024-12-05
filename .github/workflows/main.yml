@@ -33,6 +33,6 @@ jobs:
 
     - name: Create AMI with Updated Java App
       run: |
-        INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=my-instance" --query "Reservations[0].Instances[0].InstanceId" --output text)
+        INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=product-app-soham" --query "Reservations[0].Instances[0].InstanceId" --output text)
         AMI_ID=$(aws ec2 create-image --instance-id $INSTANCE_ID --name "my-app-$(date +%Y%m%d%H%M%S)" --no-reboot --query "ImageId" --output text)
         echo "AMI_ID=$AMI_ID" >> $GITHUB_ENV
